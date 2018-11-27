@@ -45,23 +45,25 @@
 
                 <ul>
                     <li class="p-b-9">
-                        <a href="#" class="s-text7">
+                        <a href="{{ url('/') }}" class="s-text7">
                             Home
                         </a>
-                    </li> <li class="p-b-9">
-                        <a href="#" class="s-text7">
+                    </li>
+
+                     <li class="p-b-9">
+                        <a href="{{ url('product-list') }}" class="s-text7">
                             Shop
                         </a>
                     </li>
 
                     <li class="p-b-9">
-                        <a href="#" class="s-text7">
+                        <a href="{{ url('about-us') }}" class="s-text7">
                             About
                         </a>
                     </li>
 
                     <li class="p-b-9">
-                        <a href="#" class="s-text7">
+                        <a href="{{ url('contact-us') }}" class="s-text7">
                             Contact
                         </a>
                     </li>

@@ -41,7 +41,7 @@ class SiteController extends Controller
      */
     public function aboutUs()
     {
-        $data['title'] = 'Home';
+        $data['title'] = 'About Us';
         $data['about'] = About::where('is_active', 1)->first();
         return view('pages.about-us', $data);
     }
@@ -49,7 +49,7 @@ class SiteController extends Controller
 
     public function productList()
     {
-        $data['title'] = 'Home';
+        $data['title'] = 'Product List';
         $data['categories'] = Category::where('is_active', 1)->get();
         $data['product_lists'] = Product::leftJoin('categories', 'categories.cat_id', '=', 'products.cat_id')->paginate(6);
         return view('pages.product-list', $data);
@@ -69,7 +69,7 @@ class SiteController extends Controller
 
     public function productListById($cat_id)
     {
-        $data['title'] = 'Home';
+        $data['title'] = 'Product by Category';
         $data['categories'] = Category::where('is_active', 1)->get();
         if($cat_id == 'all'){
             $data['product_lists'] = Product::leftJoin('categories', 'categories.cat_id', '=', 'products.cat_id')->paginate(6);
@@ -87,7 +87,7 @@ class SiteController extends Controller
      */
     public function show($product_id)
     {
-        $data['title'] = 'Home';
+        $data['title'] = 'Product Details';
         $data['product_list'] = Product::where('products.product_id', $product_id)->leftJoin('categories', 'categories.cat_id', '=', 'products.cat_id')->first();
         $data['products'] = Product::where('products.product_id', '!=', $product_id)->leftJoin('categories', 'categories.cat_id', '=', 'products.cat_id')->paginate(6);
         
@@ -97,8 +97,8 @@ class SiteController extends Controller
     public function contactUs()
     {
         // $data['about'] = About::where('is_active', 1)->first();
-        $data['title'] = 'Home';
-        return view('pages.contact-us');
+        $data['title'] = 'Contact Us';
+        return view('pages.contact-us', $data);
     }
 
 }

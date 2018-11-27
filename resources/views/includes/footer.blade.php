@@ -46,27 +46,26 @@
                 <ul>
                     <li class="p-b-9">
                         <a href="#" class="s-text7">
-                            Search
+                            Home
+                        </a>
+                    </li> <li class="p-b-9">
+                        <a href="#" class="s-text7">
+                            Shop
                         </a>
                     </li>
 
                     <li class="p-b-9">
                         <a href="#" class="s-text7">
-                            About Us
+                            About
                         </a>
                     </li>
 
                     <li class="p-b-9">
                         <a href="#" class="s-text7">
-                            Contact Us
+                            Contact
                         </a>
                     </li>
 
-                    <li class="p-b-9">
-                        <a href="#" class="s-text7">
-                            Returns
-                        </a>
-                    </li>
                 </ul>
             </div>
 

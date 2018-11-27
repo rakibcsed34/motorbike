@@ -15,6 +15,9 @@
                         </h4>
 
                         <ul class="p-b-54">
+                            <a href="{{ url('product-search').'/all' }}" class="s-text13 active1">
+                                    All Category
+                                </a>
                             @if(isset($categories))
                             @foreach($categories as $category)
                             <li class="p-t-4">
@@ -32,25 +35,30 @@
                     <div class="flex-sb-m flex-w p-b-35">
                         <div class="flex-w">
                             <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
-                                <select class="selection-2" name="sorting">
-                                    <option>Default Sorting</option>
-                                    <option>Popularity</option>
-                                    <option>Price: low to high</option>
-                                    <option>Price: high to low</option>
-                                </select>
+                                @if(isset($categories))
+                                    <select class="form-control" name="sorting">
+                                        <option>Default Sorting</option>
+                                        @foreach($categories as $category)
+
+                                        <option value="{{ $category->cat_id }}">{{ $category->category_name }}</option>
+                                        @endforeach
+                                    </select>
+                                @endif
                             </div>
 
                             <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
-                                <select class="selection-2" name="sorting">
+                                <select class="form-control" name="sorting">
                                     <option>Price</option>
-                                    <option>$0.00 - $50.00</option>
-                                    <option>$50.00 - $100.00</option>
-                                    <option>$100.00 - $150.00</option>
-                                    <option>$150.00 - $200.00</option>
-                                    <option>$200.00+</option>
+                                    <option value="1">0.00 - 50000.00</option>
+                                    <option value="2">50000.00 - 100000.00</option>
+                                    <option value="3">100000.00 - 150000.00</option>
+                                    <option value="4">150000.00 - 200000.00</option>
+                                    <option value="5">200000.00+</option>
 
                                 </select>
                             </div>
+
+                            <input class="btn btn-primary" type="submit" name="btnSearch" value="Search">
                         </div>
 
                         <span class="s-text8 p-t-5 p-b-5">
@@ -97,6 +105,7 @@
                         @endforeach
                         @endif
                     </div>
+                    {{ $product_lists->links() }}
                 </div>
             </div>
         </div>

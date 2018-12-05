@@ -33,14 +33,16 @@
                 <div class="col-sm-6 col-md-8 col-lg-9 p-b-50">
                     <!--  -->
                     <div class="flex-sb-m flex-w p-b-35">
+                        <form action="{{ url('/product-list') }}" method="post" accept-charset="utf-8">
                         <div class="flex-w">
+                                {{ csrf_field() }}
                             <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
                                 @if(isset($categories))
-                                    <select class="form-control" name="sorting">
-                                        <option>Default Sorting</option>
+                                    <select class="form-control" name="cat_id">
+                                        <option value="all">Default Sorting</option>
                                         @foreach($categories as $category)
 
-                                        <option value="{{ $category->cat_id }}">{{ $category->category_name }}</option>
+                                        <option {{ ($post_cat_id == $category->cat_id)?'selected':'' }} value="{{ $category->cat_id }}">{{ $category->category_name }}</option>
                                         @endforeach
                                     </select>
                                 @endif
@@ -59,7 +61,9 @@
                             </div>
 
                             <input class="btn btn-primary" type="submit" name="btnSearch" value="Search">
+
                         </div>
+                        </form>
 
                         <span class="s-text8 p-t-5 p-b-5">
                             Showing 1–12 of 16 results

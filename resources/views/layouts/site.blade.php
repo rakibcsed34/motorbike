@@ -4,6 +4,9 @@
     <title>{{ $title }}</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="{{ url('frontend/images/icons/favicon.png"') }}"/>
 <!--===============================================================================================-->
@@ -37,6 +40,16 @@
     <link rel="stylesheet" type="text/css" href="{{ url('frontend/css/main.css') }}">
 <!--===============================================================================================-->
 <script type="text/javascript" src="{{ url('frontend/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+<script type="text/javascript">
+    var base_url = '{{ url('') }}';
+        $(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        });
+</script>
 </head>
 <body class="animsition">
 
@@ -96,10 +109,11 @@
 <!--===============================================================================================-->
     <script type="text/javascript" src="{{ url('frontend/vendor/sweetalert/sweetalert.min.js') }}"></script>
     <script type="text/javascript">
-        $('.block2-btn-addcart').each(function(){
+        /*$('.block2-btn-addcart').each(function(){
             var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
             $(this).on('click', function(){
                 swal(nameProduct, "is added to cart !", "success");
+                $(".header-icons-noti").html(5);
             });
         });
 
@@ -108,12 +122,14 @@
             $(this).on('click', function(){
                 swal(nameProduct, "is added to wishlist !", "success");
             });
-        });
+        });*/
     </script>
 
 <!--===============================================================================================-->
 <script type="text/javascript" src="{{ url('frontend/vendor/noui/nouislider.min.js') }}"></script>
+
     <script type="text/javascript">
+
         /*[ No ui ]
         ===========================================================*/
         var filterBar = document.getElementById('filter-bar');

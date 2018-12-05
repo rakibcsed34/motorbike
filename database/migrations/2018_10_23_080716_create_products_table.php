@@ -23,7 +23,7 @@ class CreateProductsTable extends Migration
             $table->string('weight');
             $table->string('top_speed');
             $table->string('mileage');
-            $table->string('price');
+            $table->float('price');
             $table->string('image');
             $table->text('descriptions');
             $table->timestamps();

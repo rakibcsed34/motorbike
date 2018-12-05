@@ -13,6 +13,10 @@ class Category extends Model
      */
     protected $table = 'categories';
 
+    public function hasProduct(){
+        return $this->hasMany('App\Product', 'cat_id', 'cat_id');
+    }
+
     /**
      * Attributes that should be mass-assignable.
      *

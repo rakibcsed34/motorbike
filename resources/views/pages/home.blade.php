@@ -21,47 +21,60 @@
                      @if(isset($product_lists))
                         @foreach($product_lists as $product_list)
 
-                        <div class="item-slick2 p-l-15 p-r-15">
+                            <div class="item-slick2 p-l-15 p-r-15">
 
-                            <!-- Block2 -->
-                            <div class="block2">
-                                <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
-                                    <img src="{{url('uploads/product/'.$product_list->image)}}" alt="IMG-PRODUCT">
+                                <!-- Block2 -->
+                                <div class="block2">
+                                    <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
+                                        <img src="{{url('uploads/product/'.$product_list->image)}}" alt="IMG-PRODUCT">
 
-                                    <div class="block2-overlay trans-0-4">
-                                        <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
-                                            <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
-                                            <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-                                        </a>
+                                        <div class="block2-overlay trans-0-4">
+                                            <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
+                                                <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
+                                                <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
+                                            </a>
 
-                                        <div class="block2-btn-addcart w-size1 trans-0-4">
-                                            <!-- Button -->
-                                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                Add to Cart
-                                            </button>
+                                            <div class="block2-btn-addcart w-size1 trans-0-4">
+                                                <!-- Button -->
+                                                <button onclick="addToCart('{{ $product_list->product_id }}')" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                                    Add to Cart
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="block2-txt p-t-20">
-                                    <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
-                                        {{ $product_list->product_name }}
-                                    </a>
+                                    <div class="block2-txt p-t-20">
+                                        <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
+                                            {{ $product_list->product_name }}
+                                        </a>
 
-                                    <span class="block2-price m-text6 p-r-5">
-                                        {{ $product_list->price }}
-                                    </span>
+                                        <span class="block2-price m-text6 p-r-5">
+                                            {{ $product_list->price }}
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
 
-                        </div>
-                    @endforeach
+                        @endforeach
                     @endif
                 </div>
             </div>
 
         </div>
     </section>
+
+    <script type="text/javascript">
+        function addToCart(product_id) {
+            $.ajax({
+                url: '{{ url('/add-to-cart') }}',
+                method: 'POST',
+                data: {'product_id': product_id},
+                success: function(response){
+                    window.location.reload();
+                }
+            });
+        }
+    </script>
 
 
 @endsection

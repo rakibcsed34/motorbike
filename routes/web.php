@@ -19,10 +19,14 @@ Route::get('/', 'SiteController@index');
 Route::get('/about-us', 'SiteController@aboutUs')->name('about-us');
 Route::get('/about-us', 'SiteController@aboutUs')->name('about-us');
 Route::get('/product-list', 'SiteController@productList')->name('product-list');
+Route::post('/product-list', 'SiteController@productList')->name('product-list');
 Route::get('/product-details/{product_id}', 'SiteController@show');
 Route::post('/product-search', 'SiteController@productListSearch');
 Route::get('/product-search/{cat_id}', 'SiteController@productListById');
 Route::get('/contact-us', 'SiteController@contactUs')->name('contact-us');
+Route::post('/add-to-cart', 'SiteController@addToCart');
+Route::get('/view-cart', 'SiteController@viewCart');
+Route::post('/delete-cart', 'SiteController@deleteCart');
 
 Auth::routes();
 
